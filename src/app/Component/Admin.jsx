@@ -21,13 +21,13 @@ function Admin() {
 
   }
   async function getuser(){
-    let {data}=await axios.get(`http://localhost:3000/Api/User/${localStorage.getItem("UserEmail")}`);
+    let {data}=await axios.get(`https://firstnextapp-c89c.onrender.com/Api/User/${localStorage.getItem("UserEmail")}`);
     // console.log(data.msg._id)
     setuserdata(data.msg)
     setuserid(data.msg._id)
 
     // Getting all the task of user
-     let data1=await axios.get(`http://localhost:3000/Api/Works/${data.msg._id}`);
+     let data1=await axios.get(`https://firstnextapp-c89c.onrender.com/Api/Works/${data.msg._id}`);
     console.log(data1.data.msg);
     setTaskData(data1.data.msg)
  
@@ -38,7 +38,7 @@ function Admin() {
   },[])
   async function HandleTaskAdd(e){
     e.preventDefault();
-    let {data}=await axios.post("http://localhost:3000/Api/Works",{name,description,date,userid})
+    let {data}=await axios.post("https://firstnextapp-c89c.onrender.com/Api/Works",{name,description,date,userid})
     console.log(data);
     if(data.success){
       toast.success(data.msg);
@@ -53,20 +53,20 @@ function Admin() {
   }
   async function GetAllTask(){
     alert(userid)
-    let {data}=await axios.get(`http://localhost:3000/Api/Works/${userid}`);
+    let {data}=await axios.get(`https://firstnextapp-c89c.onrender.com/Api/Works/${userid}`);
     console.log(data.msg);
     setTaskData(data.msg)
   }
   async function HandleTaskComplete(TaskId){
     // alert(userid)
-    let {data}=await axios.post(`http://localhost:3000/Api/Works/${userid}/${TaskId}`)
+    let {data}=await axios.post(`https://firstnextapp-c89c.onrender.com/Api/Works/${userid}/${TaskId}`)
     console.log(data)
     getuser();
     
   }
   async function HandleTaskDelete(TaskId){
     // alert(userid)
-    let {data}=await axios.delete(`http://localhost:3000/Api/Works/${userid}/${TaskId}`)
+    let {data}=await axios.delete(`https://firstnextapp-c89c.onrender.com/Api/Works/${userid}/${TaskId}`)
     console.log(data)
     getuser();
     

@@ -12,7 +12,7 @@ function SignUp() {
   let {IsLogin,setIsLogin}=useContext(AppContext);
   async function HandleSubmit(e){
     e.preventDefault();
-    let {data}=await axios.post("http://localhost:3000/Api/User",{username,email,password});
+    let {data}=await axios.post("https://firstnextapp-c89c.onrender.com/Api/User",{username,email,password});
     console.log(data);
     if(data.success){
       toast.success(data.msg);

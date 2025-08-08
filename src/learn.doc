@@ -50,7 +50,7 @@ export default error
 }
   
   ->We can find this queryparams by method->console.log(request.nextUrl.searchParams)
---->http://localhost:3000/Api/User/?name="Ravi"
+--->https://firstnextapp-c89c.onrender.com/Api/User/?name="Ravi"
 -->Fetching the data send in the body during the post method
     export async function POST(request){
 

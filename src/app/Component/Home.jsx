@@ -19,7 +19,7 @@ useEffect(()=>{
 async function HandleSubmit(e){
   // alert("hello")
   e.preventDefault();
-  let {data}=await axios.post(`http://localhost:3000/Api/Contact`,{name,email,message});
+  let {data}=await axios.post(`https://firstnextapp-c89c.onrender.com/Api/Contact`,{name,email,message});
   // console.log(data);
   if(data.success){
     toast.success(data.msg)
