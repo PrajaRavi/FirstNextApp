@@ -1,8 +1,7 @@
-
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { DBConnect } from "@/helper/db";
-import { AppProvider } from "./Component/Store";
+// import Navbar from "./Navbar";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -19,17 +18,15 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-// let [Hello,setHello]=useState("hi i am Ravi Prajapati")
-DBConnect();
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-<AppProvider chidren={children}>
-
-        {/* {children} */}
-</AppProvider>
-        </body>
-
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <>
+        {children}
+        </>
+      </body>
     </html>
   );
 }

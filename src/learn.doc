@@ -1,0 +1,117 @@
+<----------------------------Next js is a full stack web framework--------------------------------->
+1.We can create  a middilware.js file which will run after every requeset and also we can make .env file
+2.Here page.jsx work as App.jsx just like in react js
+->We can make some custom pages for diffrent work
+  -loading for loading of page etc
+  -not-found.js page
+  -error.js  page
+  -route.js -->used for write backend code 
+  -template.js
+<--------------------------All the folders for routing make inside the app folder-------------------------->
+3.Just like react-native here for routing we can use the folder name and can route from one folder to another folder
+4.for daynamic routing use [folder-name]
+5.a folder which is out of routing use [_folder-name]
+6.Nasted routing 
+ About(folder)>AboutAdmin(folder)  for About->/about and for AboutAdmin->/about/AboutAdmin
+ <---------normally we are creating the pages are not client-side they are server-side means when we call the pages then the server returns the value of the pages---------------> and for client side pages we have to make pages in a diffrent way.
+ <-------------Use loading.js file in the respective folder to for which before loading we have to show the loading page
+->using "use client" direactive for making the page client side 
+ "use client"
+import React from 'react'
+
+<-------if we make the not-found and loading page in the app route component then it will work for all the component inside it for speacific folder we have to create inside the respective folder------------------->
+
+function error({error,reset}) {
+  return (
+    <div>
+      <h1>Something wrong!!!!</h1>
+    </div>
+  )
+}
+
+export default error
+
+
+<=======================backend==============================>
+->for creating api first create route.js file and inside it we can write our function
+    import { NextResponse } from "next/server";
+
+    export function GET(request){
+      return NextResponse.json({msg:"Hello I am Ravi Prajapati and this is just for testing purpose"})
+
+    }
+  <----------for testing the apis use postman since only the get api we can test on browser ------------------->
+   return NextResponse.json({msg:"Hello this the post method"},{status:201,statusText:"hey statustext change"})
+   ->Daynamic routing
+     api/user/[userid]
+    ->export function GET(request,{params}){-->Getting the queryparams
+      return NextResponse.json({data:params,msg:"testing the daynamic routing"});
+  
+}
+  
+  ->We can find this queryparams by method->console.log(request.nextUrl.searchParams)
+--->http://localhost:3000/Api/User/?name="Ravi"
+-->Fetching the data send in the body during the post method
+    export async function POST(request){
+
+      // console.log(request);
+      // console.log(request.nextUrl.searchParams)
+      // console.log(request.json())
+      const data=await request.json();-->parsing the json data send by the client just like app.use(express.json() ) in express.js
+      console.log(data);
+
+
+      return NextResponse.json({msg:"Hello this the post method"},{status:201,statusText:"hey statustext change"})
+      // return new Response({msg:"helllo this is post api"})
+    }
+
+    <--------------------------DATABASE SETUP---------------------------------------->
+     1.first install the mongoose package
+     2.Connecting the database so database connection is same as node js basically create a DBConnect function and export it for further use dand connection DBConnect
+<---------------------NOW PERFORMING DATABASE OPERATION-------------------------------->
+1.Create a model with the help of mongoose
+2.Create a folder name model and create model same as in node js 
+
+ 3.important -->export const UserModel=mongoose.models.NextJsUser||mongoose.model("NextJsUser",userSchema);
+<----------------important ->in react all the component we create are client side component means they are executed on the browser and then output shown but if we talking about Next.js then all the component genrally are server side so they are run on server and only the output will be send to browser so this makes our website easy to load and fast and SEO freindly ----------------------------->
+
+<===============Use Image tag instead of img tag in next js==========================>
+-->All the components which are client side should be kept inside folder component just like in react
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
